@@ -1,0 +1,55 @@
+def display_menu():
+    print("\n--- Note-Taking App Menu ---")
+    print("1. View Notes")
+    print("2. Add a New Note")
+    print("3. Search for a Note by Title")
+    print("4. Delete a Note")
+    print("5. Exit")
+
+def view_notes(notes):
+    print("\n--- All Notes ---")
+    for title, content in notes.items():
+        print(f"{title}: {content}")
+
+def add_note(notes):
+    title = input("Enter the note title: ")
+    content = input("Enter the note content: ")
+    notes[title] = content
+    print("Note added successfully!")
+
+def search_note(notes):
+    title_to_search = input("Enter the title to search: ")
+    if title_to_search in notes:
+        print(f"Note found: {notes[title_to_search]}")
+    else:
+        print("Note not found.")
+
+def delete_note(notes):
+    title_to_delete = input("Enter the title to delete: ")
+    if title_to_delete in notes:
+        del notes[title_to_delete]
+        print("Note deleted successfully!")
+    else:
+        print("Note not found.")
+
+def main():
+    while True:
+        display_menu()
+        choice = input("Enter your choice (1-5): ")
+
+        if choice == "1":
+            view_notes(notes)
+        elif choice == "2":
+            add_note(notes)
+        elif choice == "3":
+            search_note(notes)
+        elif choice == "4":
+            delete_note(notes)
+        elif choice == "5":
+            print("Exiting the Note-Taking App. Farewell!")
+            break
+        else:
+            print("Invalid choice. Please select a valid option.")
+
+if __name__ == "__main__":
+    main()
